@@ -1,0 +1,44 @@
+
+
+<div class="bg-green-200 py-32 px-10 min-h-screen ">
+    <div class="bg-white p-10 md:w-3/4 lg:w-1/2 mx-auto">
+  
+      <form>
+        <div>
+          <h1 class="text-center text-4xl font-black text-gray-900 dark:text-black">Calculadora Básica</h1>
+        </div>
+        <div class="flex mb-10">
+          <label for="primer" class="inline-block w-50 mr-6 text-right 
+                                   font-bold text-gray-600">Ingrese Primer Valor</label>
+          <input type="number" [(ngModel)]="firstNumber" id="primer" name="primer" placeholder="Primer Valor" 
+                 class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
+                        text-gray-600 placeholder-gray-400
+                        outline-none">
+        </div>
+  
+        <div class="flex mb-10">
+          <label for="segundo" class="inline-block w-50 mr-6 text-right
+                                      font-bold text-gray-600">Ingrese Segundo Valor</label>
+          <input type="number" [(ngModel)]="secondNumber" id="segundo" name="segundo" placeholder="Segundo Valor" 
+                 class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
+                 text-gray-600 placeholder-gray-400
+                 outline-none">
+        </div>
+        
+        <!--[disabled] nos ayuda a deshabilitar el select si los 2 input no contienen ningún valor-->
+        <div class="flex mb-10 ">
+          <select (change)="onChange($event)" [disabled]="!firstNumber || !secondNumber" id="operation" name="operation" autocomplete="operation" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option *ngFor="let option of options" [value]="option">{{option}}</option>
+          </select>
+        </div>
+        <div>
+          <div *ngIf="selectedOption === 'Elija una opción'"><p class="text-red-600">Resultado : {{result}}</p></div>
+          <div *ngIf="selectedOption === 'Suma'"><p class="text-blue-600">Resultado : {{result}}</p></div>
+          <div *ngIf="selectedOption === 'Resta'"><p class="text-green-500">Resultado : {{result}}</p></div>
+          <div *ngIf="selectedOption === 'Multiplicación'"><p class="text-teal-600">Resultado : {{result}}</p></div>
+          <div *ngIf="selectedOption === 'División'"><p class="text-purple-600">Resultado : {{result}}</p></div>
+        </div>
+        
+      </form>
+    </div>
+  </div>  
